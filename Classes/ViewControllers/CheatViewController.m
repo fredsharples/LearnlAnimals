@@ -57,9 +57,7 @@
 
 - (void)dealloc {
 	[_textField removeFromSuperview];
-	[_textField release];
 	
-    [super dealloc];
 }
 
 - (void) arrangeViewForLevel:(int)levelNum {
@@ -95,7 +93,6 @@
 	
 	// add this picker to our view controller, initially hidden
 	[self.view addSubview:levelPicker];
-	[levelPicker release];
 	
 	UIButton *btn0 = [UIButton buttonWithType:UIButtonTypeCustom];
 	btn0.backgroundColor = [UIColor whiteColor];

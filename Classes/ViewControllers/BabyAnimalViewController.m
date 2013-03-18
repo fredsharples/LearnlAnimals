@@ -59,10 +59,5 @@
 }
 
 
-- (void)dealloc {
-	[_babyAnimalView release]; 
 
-    [super dealloc];
-}
-
-@end
+@end

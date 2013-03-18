@@ -146,12 +146,10 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 		
 		_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
 		if(_context == nil) {
-			[self release];
 			return nil;
 		}
 		
 		if(![self _createSurface]) {
-			[self release];
 			return nil;
 		}
 	}
@@ -170,12 +168,10 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 		
 		_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
 		if(_context == nil) {
-			[self release];
 			return nil;
 		}
 		
 		if(![self _createSurface]) {
-			[self release];
 			return nil;
 		}
 	}
@@ -186,10 +182,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 - (void) dealloc {
 	[self _destroySurface];
 	
-	[_context release];
-	_context = nil;
 	
-	[super dealloc];
 }
 
 - (void) layoutSubviews {

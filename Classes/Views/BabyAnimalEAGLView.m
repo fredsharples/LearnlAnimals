@@ -50,7 +50,7 @@
 	
 	_firstDraw = YES;
 	_showSpeckles = YES;
-	_imageFileName = [[NSString alloc] initWithString:@""];
+	_imageFileName = @"";
 	
 	_speckle =  [[Texture2D alloc] initWithImage: [UIImage imageNamed:kImage_Speckle]];
 	_paper = [[Texture2D alloc] initWithImage: [UIImage imageNamed:kImage_Paper]];
@@ -94,23 +94,14 @@
 - (void)dealloc {
 	[self startDrawTimer:NO];
 	
-	[_image release];
-	[_speckle release];
-	[_paper release];
 	
-	[_imageFileName release];
 	
-    [super dealloc];
 }
 
 - (void) set_imageFileName:(NSString*)newImageFileName {
 	NSString *imagePath;
 	
 	if (_firstDraw || [newImageFileName localizedCompare:_imageFileName] != NSOrderedSame) {
-		if (!_firstDraw) {
-			[_image release];
-			[_imageFileName release];
-		}
 		
 		_imageFileName = [[NSString alloc] initWithString:newImageFileName];
 		
@@ -124,4 +115,4 @@
 	return _imageFileName;
 }
 
-@end
+@end
