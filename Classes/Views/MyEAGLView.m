@@ -140,7 +140,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 	if(self != nil) {
 		CAEAGLLayer *eaglLayer = (CAEAGLLayer*)[self layer];
 		
-		[eaglLayer setDrawableProperties:@{kEAGLDrawablePropertyRetainedBacking: @NO, kEAGLDrawablePropertyColorFormat: kEAGLColorFormatRGB565}];
+		[eaglLayer setDrawableProperties:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO], kEAGLDrawablePropertyRetainedBacking, kEAGLColorFormatRGB565, kEAGLDrawablePropertyColorFormat, nil]];
 		_format = kEAGLColorFormatRGB565;
 		_depthFormat = 0;
 		
@@ -164,7 +164,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 	if ((self = [super initWithCoder:coder])) {
 		CAEAGLLayer *eaglLayer = (CAEAGLLayer*)[self layer];
 		
-		[eaglLayer setDrawableProperties:@{kEAGLDrawablePropertyRetainedBacking: @NO, kEAGLDrawablePropertyColorFormat: kEAGLColorFormatRGB565}];
+		[eaglLayer setDrawableProperties:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO], kEAGLDrawablePropertyRetainedBacking, kEAGLColorFormatRGB565, kEAGLDrawablePropertyColorFormat, nil]];
 		_format = kEAGLColorFormatRGB565;
 		_depthFormat = 0;
 		

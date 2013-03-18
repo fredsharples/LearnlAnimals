@@ -336,7 +336,7 @@
 		_currentAnimation = 1;
 	}
 	
-	NSString *imageName = [NSString stringWithFormat:@"screen_%@_drawing_0%d", _type, [_levelData[_currentAnimation] intValue]];
+	NSString *imageName = [NSString stringWithFormat:@"screen_%@_drawing_0%d", _type, [[_levelData objectAtIndex:_currentAnimation] intValue]];
 
 	_babyAnimalEAGLView0._imageFileName = imageName;
 	
@@ -603,9 +603,9 @@
 	_animationStarted = NO;
 	_currentAnimation = 1;
 	_levelNum = newLevelNum;
-	_levelData = _levels[_levelNum];
+	_levelData = [_levels objectAtIndex:_levelNum];
 	[_type release];
-	_type = [[NSString alloc] initWithString:_levelData[0]];
+	_type = [[NSString alloc] initWithString:[_levelData objectAtIndex:0]];
 }
 
 - (void) setLevelData:(NSArray*)newLevelData {

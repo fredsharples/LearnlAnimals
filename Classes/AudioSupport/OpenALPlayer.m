@@ -154,7 +154,7 @@ void RouteChangeListener(void *inClientData, AudioSessionPropertyID inID,
 	[super dealloc];
 	
 	for (id key in _sounds) {
-		[_sounds[key] release];
+		[[_sounds objectForKey:key] release];
 	}
 	[_sounds release];
 	
