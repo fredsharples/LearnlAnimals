@@ -139,7 +139,7 @@
 		_currentAnimation = 1;
 	}
 	
-	NSString *imageName = [NSString stringWithFormat:@"screen_%@_0%d", _type, [[_levelData objectAtIndex:_currentAnimation] intValue]];
+	NSString *imageName = [NSString stringWithFormat:@"screen_%@_0%d", _type, [_levelData[_currentAnimation] intValue]];
 	
 	_babyAnimalEAGLView0._imageFileName = imageName;
 	[self startAnimationTimer];
@@ -151,7 +151,7 @@
 	_animationStarted = NO;
 	_currentAnimation = 1;
 
-	_type = [[NSString alloc] initWithString:[_levelData objectAtIndex:0]];
+	_type = [[NSString alloc] initWithString:_levelData[0]];
 		
 	[self initializeViewAnimation];
 	
