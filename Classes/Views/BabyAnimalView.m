@@ -81,7 +81,9 @@
 	CGImageRelease(_speckle);
 	CGImageRelease(_paper);
 	
+	[_imageFileName release];
 
+    [super dealloc];
 }
 
 
@@ -91,6 +93,7 @@
 	UIImage *img0;
 	
 	if (_imageFileName) {
+		[_imageFileName release];
 		CGImageRelease(_image);
 	}
 	

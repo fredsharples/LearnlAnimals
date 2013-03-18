@@ -23,7 +23,7 @@
 	
 	_paperImageView.image = [UIImage imageNamed:kImage_Paper];
 	
-	_soundIdentifier = @"";
+	_soundIdentifier = [[NSString alloc] initWithString:@""];
 }
 
 
@@ -51,13 +51,21 @@
 - (void)dealloc {
 	[self invalidateTimer];
 	
+	[_levelData release];
+	[_levels release];
 	
+	[_paperImageView release];
 	
+	[_babyAnimalEAGLView0 release];
+	[_babyAnimalView release];
 	/* Removed because no swipe gestures anymore */
 	//[_babyAnimalView0 release];
 	//[_babyAnimalView1 release];
 	
+	[_soundIdentifier release];
+	[_type release];
 	
+    [super dealloc];
 }
 
 #pragma mark -
@@ -487,6 +495,7 @@
 #pragma mark Sound
 
 - (void) playSoundIdentifier {
+	[_soundIdentifier release];
 	if (_currentImage == 1) {
 		_soundIdentifier = [[NSString alloc] initWithFormat:@"VO_%@", _type];
 		[(BabyAnimalsAppDelegate*)[[UIApplication sharedApplication] delegate] playSound:_soundIdentifier restart:YES];
@@ -521,6 +530,7 @@
 		_timer = [NSTimer scheduledTimerWithTimeInterval:(kViewFadeTime) target:self selector:@selector(checkIfSFXPlaying) userInfo:nil repeats:NO];
 	} else {
 		_timer = nil;
+		[_soundIdentifier release];
 		_soundIdentifier = [[NSString alloc] initWithFormat:@"VO_%@", _type];
 		[(BabyAnimalsAppDelegate*)[[UIApplication sharedApplication] delegate] playSound:_soundIdentifier restart:YES];
 	}
@@ -594,6 +604,7 @@
 	_currentAnimation = 1;
 	_levelNum = newLevelNum;
 	_levelData = _levels[_levelNum];
+	[_type release];
 	_type = [[NSString alloc] initWithString:_levelData[0]];
 }
 

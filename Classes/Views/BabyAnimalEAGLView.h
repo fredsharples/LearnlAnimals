@@ -26,7 +26,7 @@
 - (void) drawView;
 - (void) startDrawTimer:(BOOL)start;
 
-@property(nonatomic, strong) NSString *_imageFileName;
+@property(nonatomic, retain) NSString *_imageFileName;
 @property BOOL _showSpeckles;
 
 @end

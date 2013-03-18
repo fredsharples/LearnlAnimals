@@ -52,8 +52,8 @@
 - (void) stopSound:(NSString*)identifier;
 - (void) fadeSoundOut:(NSString*)identifier;
 
-@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet UIWindow *window;
 //@property (nonatomic, retain) SoundEngineManager *_soundManager;
-@property (nonatomic, strong) OpenALPlayer *_openALPlayer;
+@property (nonatomic, retain) OpenALPlayer *_openALPlayer;
 
 @end

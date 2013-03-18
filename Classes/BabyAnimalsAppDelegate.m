@@ -63,6 +63,27 @@
 #pragma mark -
 #pragma mark Memory Management
 
+- (void)dealloc {
+	[_saveData release];
+	
+	[_levels release];
+	[_titleData release];
+	
+	[_openALPlayer release];
+	
+	if (_cheatButton) {
+		[_cheatButton release];
+	}
+	
+	[_paperImageView release];
+	
+	[_gameViewController release];
+	[_viewController release];
+
+    [window release];
+	
+    [super dealloc];
+}
 
 #pragma mark -
 #pragma mark Application Initialization
@@ -98,6 +119,7 @@
 - (void) changeState:(unsigned)state {
 	if (_viewController && [_viewController view] && [[_viewController view] superview]) {
 		[[_viewController view] removeFromSuperview];
+		[_viewController release];
 		_viewController = nil;
 	}
 	

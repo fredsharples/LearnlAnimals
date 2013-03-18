@@ -63,7 +63,9 @@
 	alDeleteSources(1, &_sourceID);
     alDeleteBuffers(1, &_bufferID);
 	
+	[_identifier release];
 	
+	[super dealloc];
 }
 
 @end
@@ -76,7 +78,7 @@
 
 #pragma mark Object Init / Maintenance
 void interruptionListener(void *inClientData, UInt32 inInterruptionState) {
-	OpenALPlayer* THIS = (__bridge  OpenALPlayer*)inClientData;
+	OpenALPlayer* THIS = (OpenALPlayer*)inClientData;
 	if (inInterruptionState == kAudioSessionBeginInterruption) {
 		//[THIS teardownOpenAL];	
 		[THIS stopAllSoundsExcept:@""];
@@ -121,7 +123,7 @@ void RouteChangeListener(void *inClientData, AudioSessionPropertyID inID,
 		_listenerRotation = 0.0;
 		
 		// setup our audio session
-		OSStatus result = AudioSessionInitialize(NULL, NULL, interruptionListener, (__bridge void *)(self));
+		OSStatus result = AudioSessionInitialize(NULL, NULL, interruptionListener, self);
 		if (result) {
 			NSLog(@"Error initializing audio session! %ld\n", result);
 		} else {
@@ -149,10 +151,12 @@ void RouteChangeListener(void *inClientData, AudioSessionPropertyID inID,
 }
 
 - (void)dealloc {
+	[super dealloc];
 	
 	for (id key in _sounds) {
-		_sounds[key];
+		[_sounds[key] release];
 	}
+	[_sounds release];
 	
 	[self teardownOpenAL];
 
@@ -179,11 +183,13 @@ void RouteChangeListener(void *inClientData, AudioSessionPropertyID inID,
 			}
 			sound = [[Sound alloc] initSoundWithIdentifier:identifier];
 			if (![self initSoundBuffer:sound forFileName:filename ofType:@"caf"]) {
+				[sound release];
 				return NULL;
 			}
 		}
 	
 		[_sounds setValue:sound forKey:identifier];
+		[sound release];
 	}
 	
 	sound = [_sounds valueForKey:identifier];
@@ -197,7 +203,7 @@ void RouteChangeListener(void *inClientData, AudioSessionPropertyID inID,
 	ALsizei freq;
 	void *data;
 	
-	CFURLRef fileURL = (CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:fileName ofType:fileType]]);
+	CFURLRef fileURL = (CFURLRef)[[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:fileName ofType:fileType]] retain];
 	
 	if (fileURL) {	
 		data = MyGetOpenALAudioData(fileURL, &size, &format, &freq);

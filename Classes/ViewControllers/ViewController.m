@@ -57,6 +57,10 @@
 }
 
 
+- (void)dealloc {
+	[_backgroundImageName release];
+    [super dealloc];
+}
 
 - (void) initializeView {
 	UIView *view;
@@ -67,6 +71,7 @@
 	view = [[UIView alloc] initWithFrame:mainRect];
 	view.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	self.view = view;
+	[view release];
 	
 	self.view.alpha = 0.0;
 	
@@ -81,6 +86,8 @@
 		_imageView.frame = CGRectMake((self.view.bounds.size.width - image.size.width) / 2, (self.view.bounds.size.height - image.size.height) / 2, image.size.width, image.size.height);
 		[self.view addSubview:_imageView];
 		
+		[image release];
+		[_imageView release];
 	}
 }	
 
@@ -145,11 +152,13 @@
 	
 	[btn setBackgroundImage:btnImage forState:UIControlStateNormal];
 	
+	[btnImage release];
 	
 	btnImage = [UIImage imageNamed:btnOver];
 	[btn setBackgroundImage:btnImage forState:UIControlStateHighlighted];
 	[btn setBackgroundImage:btnImage forState:UIControlStateSelected];
 	
+	[btnImage release];
 	
 	return btn;
 }
