@@ -35,14 +35,20 @@
 }
 */
 
-/*
+
 // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+/*- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     //return (interfaceOrientation == UIInterfaceOrientationPortrait);
 	return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
-*/
+ */
+//FS iOS6 way...
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskLandscapeLeft;
+}
+
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
