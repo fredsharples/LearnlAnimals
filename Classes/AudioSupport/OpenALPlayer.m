@@ -88,7 +88,7 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState) {
 		}
 	} else if (inInterruptionState == kAudioSessionEndInterruption) {
 		OSStatus result = AudioSessionSetActive(true);
-		if (result) NSLog(@"Error setting audio session active! %d\n", result);
+		if (result) NSLog(@"Error setting audio session active! %ld\n", result);
 		alcMakeContextCurrent(THIS->_context);
 		//[THIS initOpenAL];
 		if (THIS._interrupted) {
@@ -135,7 +135,7 @@ void RouteChangeListener(void *inClientData, AudioSessionPropertyID inID,
 //			if (result) NSLog(@"Couldn't add listener: %d", result);
 			
 			result = AudioSessionSetActive(true);
-			if (result) NSLog(@"Error setting audio session active! %d\n", result);
+			if (result) NSLog(@"Error setting audio session active! %ld\n", result);
 		}
 		
 		_interrupted = NO;
