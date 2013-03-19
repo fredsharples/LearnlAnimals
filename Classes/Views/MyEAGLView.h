@@ -72,7 +72,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @interface MyEAGLView : UIView
 {
 @private
-	NSString*				_format;
+	NSString*				__weak _format;
 	GLuint					_depthFormat;
 	BOOL					_autoresize;
 	EAGLContext				*_context;
@@ -81,21 +81,21 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 	GLuint					_depthBuffer;
 	CGSize					_size;
 	BOOL					_hasBeenCurrent;
-	id<MyEAGLViewDelegate>	_delegate;
+	id<MyEAGLViewDelegate>	__weak _delegate;
 	
 //	CGPoint gestureStartPoint;
 }
 - (id)initWithCoder:(NSCoder*)coder; 
 
 @property(readonly) GLuint framebuffer;
-@property(readonly) NSString* pixelFormat;
+@property(weak, readonly) NSString* pixelFormat;
 @property(readonly) GLuint depthFormat;
 @property(readonly) EAGLContext *context;
 
 @property BOOL autoresizesSurface; //NO by default - Set to YES to have the EAGL surface automatically resized when the view bounds change, otherwise the EAGL surface contents is rendered scaled
 @property(readonly, nonatomic) CGSize surfaceSize;
 
-@property(assign) id<MyEAGLViewDelegate> delegate;
+@property(weak) id<MyEAGLViewDelegate> delegate;
 
 - (void) setCurrentContext;
 - (BOOL) isCurrentContext;
@@ -113,4 +113,4 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 - (void) viewFadedOut;
 */
 
-@end
+@end

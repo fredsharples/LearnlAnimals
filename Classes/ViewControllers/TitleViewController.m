@@ -70,9 +70,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (void) initializeViewAnimation {
 	[UIView beginAnimations:nil context:nil];

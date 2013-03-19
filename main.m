@@ -10,11 +10,11 @@
 
 int main(int argc, char *argv[]) {
     
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
     //int retVal = UIApplicationMain(argc, argv, nil, nil);
-    int retVal = UIApplicationMain(argc, argv, nil, @"BabyAnimalsAppDelegate");
-    [pool release];
-    return retVal;
+        int retVal = UIApplicationMain(argc, argv, nil, @"BabyAnimalsAppDelegate");
+        return retVal;
+    }
     
 }
 

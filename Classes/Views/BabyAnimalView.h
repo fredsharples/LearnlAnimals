@@ -21,7 +21,7 @@
 
 - (void) initializeMe;
 
-@property(nonatomic, retain) NSString *_imageFileName;
+@property(nonatomic, strong) NSString *_imageFileName;
 @property BOOL _showSpeckles;
 
 @end
