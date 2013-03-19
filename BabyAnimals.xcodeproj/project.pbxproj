@@ -481,7 +481,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				B6E621DF16F67C4100028C9E /* Default-568h@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -494,6 +493,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B6E621DF16F67C4100028C9E /* Default-568h@2x.png */,
 				32CA4F630368D1EE00C91783 /* BabyAnimals_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				8C3B091F105880D40008E91E /* Constants.h */,
