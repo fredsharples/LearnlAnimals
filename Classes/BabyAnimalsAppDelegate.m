@@ -12,6 +12,7 @@
 #import "TitleViewController.h"
 #import "GameViewController.h"
 #import "CheatViewController.h"
+#import "ViewController.h"
 
 @implementation BabyAnimalsAppDelegate
 
@@ -51,8 +52,11 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 	_pause = NO;
+    //FS fix problem with xcode finding root view controller
+    
+	_viewController = [[BabyAnimalViewController alloc] init];
+     [self.window setRootViewController:_viewController];
 	
-	//_gameViewController = [[GameViewController alloc] init];
 
 	_openALPlayer = [[OpenALPlayer alloc] init];
 	
