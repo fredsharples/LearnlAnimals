@@ -11,15 +11,7 @@
 
 @implementation BabyAnimalViewController
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
+
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
@@ -31,20 +23,33 @@
 	[self initializeViewAnimation];
 }
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
+#pragma mark -
+#pragma mark Orientations
+// The available orientations should be defined in the Info.plist file.
+// And in iOS 6+ only, you can override it in the Root View controller in the "supportedInterfaceOrientations" method.
+// Only valid for iOS 6+. NOT VALID for iOS 4 / 5.
+-(NSUInteger)supportedInterfaceOrientations {
+	
+	// iPhone only
+	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
+		return UIInterfaceOrientationMaskLandscape;
+	
+	// iPad only
+	return UIInterfaceOrientationMaskLandscape;
 }
-*/
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+// Supported orientations. Customize it for your own needs
+// Only valid on iOS 4 / 5. NOT VALID for iOS 6.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+	// iPhone only
+	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
+		return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+	
+	// iPad only
+	// iPhone only
+	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
-*/
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

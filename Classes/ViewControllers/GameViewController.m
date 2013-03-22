@@ -23,7 +23,7 @@
 	
 	_paperImageView.image = [UIImage imageNamed:kImage_Paper];
 	
-	_soundIdentifier = [[NSString alloc] initWithString:@""];
+	_soundIdentifier = @"";
 }
 
 

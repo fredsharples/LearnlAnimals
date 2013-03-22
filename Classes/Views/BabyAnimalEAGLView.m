@@ -12,9 +12,13 @@
 @implementation BabyAnimalEAGLView
 
 @synthesize _showSpeckles;
-
+CGRect applicationFrame;
 -(id)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
+    
+CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
+  //  UIView *customView = [[UIView alloc] initWithFrame:applicationFrame];
+    
+	self = [super initWithFrame:applicationFrame];
 	if(self != nil) {
 		[self initializeView];
 	}
@@ -31,8 +35,10 @@
 }
 
 - (void) initializeView {
-	CGRect rect = [self bounds];
-	
+	CGRect rect = [self bounds]; //This is returning 320x480
+    //CGRect rect = applicationFrame;
+	NSLog(@"height is %f",rect.size.height);
+    NSLog(@"width is %f",rect.size.width);
 	//Set up OpenGL projection matrix
 	glMatrixMode(GL_PROJECTION);
 	glOrthof(0, rect.size.width, 0, rect.size.height, -1, 1);
@@ -50,7 +56,7 @@
 	
 	_firstDraw = YES;
 	_showSpeckles = YES;
-	_imageFileName = [[NSString alloc] initWithString:@""];
+	_imageFileName = @"";
 	
 	_speckle =  [[Texture2D alloc] initWithImage: [UIImage imageNamed:kImage_Speckle]];
 	_paper = [[Texture2D alloc] initWithImage: [UIImage imageNamed:kImage_Paper]];
@@ -92,10 +98,7 @@
 
 
 - (void)dealloc {
-	[self startDrawTimer:NO];
-	
-	
-	
+	[self startDrawTimer:NO];	
 }
 
 - (void) set_imageFileName:(NSString*)newImageFileName {

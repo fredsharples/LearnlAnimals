@@ -45,25 +45,6 @@
 	CGContextTranslateCTM(context, 0.0, self.bounds.size.height);
 	CGContextScaleCTM(context, 1.0, -1.0);
 	
-	// Start with a background whose color we don't use in the demo
-/*
-	CGColorRef white = [UIColor whiteColor].CGColor;
-	CGContextSetFillColorWithColor(context, white);
-	CGContextFillRect(context, self.bounds);
- */
-	
-	// We're about to modify the context CTM to draw the PDF page where we want it, so save the graphics state in case we want to do more drawing
-	//CGContextSaveGState(context);
-	
-	
-	/*
-	 // Note: The images are actually drawn upside down because Quartz image drawing expects
-	 // the coordinate system to have the origin in the lower-left corner, but a UIView
-	 // puts the origin in the upper-left corner. For the sake of brevity (and because
-	 // it likely would go unnoticed for the image used) this is not addressed here.
-	 // For the demonstration of PDF drawing however, it is addressed, as it would definately
-	 // be noticed, and one method of addressing it is shown there.
-	 */
 	if (_imageFileName) {
 		CGContextSetBlendMode(context, kCGBlendModeCopy);
 		CGContextDrawImage(context, self.bounds, _image);
