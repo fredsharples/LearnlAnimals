@@ -18,7 +18,7 @@
 
 @property ALuint _sourceID;
 @property ALuint _bufferID;
-@property (nonatomic, strong) NSString *_identifier;
+@property (nonatomic, retain) NSString *_identifier;
 @property BOOL _playing;
 @property BOOL _loop;
 @property CGPoint _position;

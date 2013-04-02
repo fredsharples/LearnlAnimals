@@ -10,44 +10,39 @@
 
 @implementation ViewController
 
-
+/*
+ // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        // Custom initialization
+    }
+    return self;
+}
+*/
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
 	[self initializeView];
+	
 	[self createViewBackground];
 	[self initializeViewAnimation];
 }
 
-
-#pragma mark -
-#pragma mark Orientations
-// The available orientations should be defined in the Info.plist file.
-// And in iOS 6+ only, you can override it in the Root View controller in the "supportedInterfaceOrientations" method.
-// Only valid for iOS 6+. NOT VALID for iOS 4 / 5.
--(NSUInteger)supportedInterfaceOrientations {
-	
-	// iPhone only
-	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
-		return UIInterfaceOrientationMaskLandscape;
-	
-	// iPad only
-	return UIInterfaceOrientationMaskLandscape;
+/*
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
 }
+*/
 
-// Supported orientations. Customize it for your own needs
-// Only valid on iOS 4 / 5. NOT VALID for iOS 6.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	// iPhone only
-	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
-		return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-	
-	// iPad only
-	// iPhone only
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+/*
+// Override to allow orientations other than the default portrait orientation.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
-
+*/
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -62,6 +57,10 @@
 }
 
 
+- (void)dealloc {
+	[_backgroundImageName release];
+    [super dealloc];
+}
 
 - (void) initializeView {
 	UIView *view;
@@ -72,6 +71,7 @@
 	view = [[UIView alloc] initWithFrame:mainRect];
 	view.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	self.view = view;
+	[view release];
 	
 	self.view.alpha = 0.0;
 	
@@ -86,6 +86,8 @@
 		_imageView.frame = CGRectMake((self.view.bounds.size.width - image.size.width) / 2, (self.view.bounds.size.height - image.size.height) / 2, image.size.width, image.size.height);
 		[self.view addSubview:_imageView];
 		
+		[image release];
+		[_imageView release];
 	}
 }	
 
@@ -150,11 +152,13 @@
 	
 	[btn setBackgroundImage:btnImage forState:UIControlStateNormal];
 	
+	[btnImage release];
 	
 	btnImage = [UIImage imageNamed:btnOver];
 	[btn setBackgroundImage:btnImage forState:UIControlStateHighlighted];
 	[btn setBackgroundImage:btnImage forState:UIControlStateSelected];
 	
+	[btnImage release];
 	
 	return btn;
 }

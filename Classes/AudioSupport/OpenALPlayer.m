@@ -63,7 +63,9 @@
 	alDeleteSources(1, &_sourceID);
     alDeleteBuffers(1, &_bufferID);
 	
+	[_identifier release];
 	
+	[super dealloc];
 }
 
 @end
@@ -76,7 +78,7 @@
 
 #pragma mark Object Init / Maintenance
 void interruptionListener(void *inClientData, UInt32 inInterruptionState) {
-	OpenALPlayer* THIS = (__bridge  OpenALPlayer*)inClientData;
+	OpenALPlayer* THIS = (OpenALPlayer*)inClientData;
 	if (inInterruptionState == kAudioSessionBeginInterruption) {
 		//[THIS teardownOpenAL];	
 		[THIS stopAllSoundsExcept:@""];
@@ -86,7 +88,7 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState) {
 		}
 	} else if (inInterruptionState == kAudioSessionEndInterruption) {
 		OSStatus result = AudioSessionSetActive(true);
-		if (result) NSLog(@"Error setting audio session active! %ld\n", result);
+		if (result) NSLog(@"Error setting audio session active! %d\n", result);
 		alcMakeContextCurrent(THIS->_context);
 		//[THIS initOpenAL];
 		if (THIS._interrupted) {
@@ -121,19 +123,19 @@ void RouteChangeListener(void *inClientData, AudioSessionPropertyID inID,
 		_listenerRotation = 0.0;
 		
 		// setup our audio session
-		OSStatus result = AudioSessionInitialize(NULL, NULL, interruptionListener, (__bridge void *)(self));
+		OSStatus result = AudioSessionInitialize(NULL, NULL, interruptionListener, self);
 		if (result) {
-			NSLog(@"Error initializing audio session! %ld\n", result);
+			NSLog(@"Error initializing audio session! %d\n", result);
 		} else {
 			UInt32 category = kAudioSessionCategory_AmbientSound;
 			result = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(category), &category);
-			if (result) NSLog(@"Error setting audio session category! %ld\n", result);
+			if (result) NSLog(@"Error setting audio session category! %d\n", result);
 			
 //			result = AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange, RouteChangeListener, self);
 //			if (result) NSLog(@"Couldn't add listener: %d", result);
 			
 			result = AudioSessionSetActive(true);
-			if (result) NSLog(@"Error setting audio session active! %ld\n", result);
+			if (result) NSLog(@"Error setting audio session active! %d\n", result);
 		}
 		
 		_interrupted = NO;
@@ -149,10 +151,12 @@ void RouteChangeListener(void *inClientData, AudioSessionPropertyID inID,
 }
 
 - (void)dealloc {
+	[super dealloc];
 	
 	for (id key in _sounds) {
-		[_sounds objectForKey:key];
+		[[_sounds objectForKey:key] release];
 	}
+	[_sounds release];
 	
 	[self teardownOpenAL];
 
@@ -179,11 +183,13 @@ void RouteChangeListener(void *inClientData, AudioSessionPropertyID inID,
 			}
 			sound = [[Sound alloc] initSoundWithIdentifier:identifier];
 			if (![self initSoundBuffer:sound forFileName:filename ofType:@"caf"]) {
+				[sound release];
 				return NULL;
 			}
 		}
 	
 		[_sounds setValue:sound forKey:identifier];
+		[sound release];
 	}
 	
 	sound = [_sounds valueForKey:identifier];
@@ -197,7 +203,7 @@ void RouteChangeListener(void *inClientData, AudioSessionPropertyID inID,
 	ALsizei freq;
 	void *data;
 	
-	CFURLRef fileURL = (CFURLRef)CFBridgingRetain([NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:fileName ofType:fileType]]);
+	CFURLRef fileURL = (CFURLRef)[[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:fileName ofType:fileType]] retain];
 	
 	if (fileURL) {	
 		data = MyGetOpenALAudioData(fileURL, &size, &format, &freq);

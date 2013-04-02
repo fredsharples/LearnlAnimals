@@ -12,51 +12,18 @@
 #import "TitleViewController.h"
 #import "GameViewController.h"
 #import "CheatViewController.h"
-#import "ViewController.h"
 
 @implementation BabyAnimalsAppDelegate
 
 @synthesize window;
 
 #pragma mark -
-#pragma mark Orientations
-// The available orientations should be defined in the Info.plist file.
-// And in iOS 6+ only, you can override it in the Root View controller in the "supportedInterfaceOrientations" method.
-// Only valid for iOS 6+. NOT VALID for iOS 4 / 5.
--(NSUInteger)supportedInterfaceOrientations {
-	
-	// iPhone only
-	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
-		return UIInterfaceOrientationMaskLandscape;
-	
-	// iPad only
-	return UIInterfaceOrientationMaskLandscape;
-}
-
-// Supported orientations. Customize it for your own needs
-// Only valid on iOS 4 / 5. NOT VALID for iOS 6.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	// iPhone only
-	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
-		return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-	
-	// iPad only
-	// iPhone only
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
-
-
-#pragma mark -
 #pragma mark Life Cycle
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 	_pause = NO;
-    //FS fix problem with xcode finding root view controller
-    
-	_viewController = [[BabyAnimalViewController alloc] init];
-     [self.window setRootViewController:_viewController];
 	
+	//_gameViewController = [[GameViewController alloc] init];
 
 	_openALPlayer = [[OpenALPlayer alloc] init];
 	
@@ -96,6 +63,27 @@
 #pragma mark -
 #pragma mark Memory Management
 
+- (void)dealloc {
+	[_saveData release];
+	
+	[_levels release];
+	[_titleData release];
+	
+	[_openALPlayer release];
+	
+	if (_cheatButton) {
+		[_cheatButton release];
+	}
+	
+	[_paperImageView release];
+	
+	[_gameViewController release];
+	[_viewController release];
+
+    [window release];
+	
+    [super dealloc];
+}
 
 #pragma mark -
 #pragma mark Application Initialization
@@ -118,6 +106,8 @@
 	[[NSUserDefaults standardUserDefaults] registerDefaults:savedLocationDict];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
+	//[_gameViewController setLevelData:[NSArray arrayWithArray:[_gameData valueForKey:@"Levels"]]];
+	//[_gameViewController setLevelNum:[[_saveData valueForKey:@"LevelNum"] integerValue]];
 	_levels = [[NSArray alloc] initWithArray:[_gameData valueForKey:@"Levels"]];
 	_levelNum = [[_saveData valueForKey:@"LevelNum"] unsignedIntValue];
 	_titleData = [[NSArray alloc] initWithArray:[_gameData valueForKey:@"Title"]];
@@ -129,6 +119,7 @@
 - (void) changeState:(unsigned)state {
 	if (_viewController && [_viewController view] && [[_viewController view] superview]) {
 		[[_viewController view] removeFromSuperview];
+		[_viewController release];
 		_viewController = nil;
 	}
 	

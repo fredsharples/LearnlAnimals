@@ -66,6 +66,12 @@
 }
 
 
+- (void)dealloc {
+	if (_noWebConnection) {
+		[_noWebConnection release];
+	}
+    [super dealloc];
+}
 
 // A tap starts game play
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {

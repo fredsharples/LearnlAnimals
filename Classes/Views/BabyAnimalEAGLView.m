@@ -12,13 +12,9 @@
 @implementation BabyAnimalEAGLView
 
 @synthesize _showSpeckles;
-CGRect applicationFrame;
+
 -(id)initWithFrame:(CGRect)frame {
-    
-CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
-  //  UIView *customView = [[UIView alloc] initWithFrame:applicationFrame];
-    
-	self = [super initWithFrame:applicationFrame];
+	self = [super initWithFrame:frame];
 	if(self != nil) {
 		[self initializeView];
 	}
@@ -35,10 +31,8 @@ CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
 }
 
 - (void) initializeView {
-	CGRect rect = [self bounds]; //This is returning 320x480
-    //CGRect rect = applicationFrame;
-	NSLog(@"height is %f",rect.size.height);
-    NSLog(@"width is %f",rect.size.width);
+	CGRect rect = [self bounds];
+	
 	//Set up OpenGL projection matrix
 	glMatrixMode(GL_PROJECTION);
 	glOrthof(0, rect.size.width, 0, rect.size.height, -1, 1);
@@ -56,7 +50,7 @@ CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
 	
 	_firstDraw = YES;
 	_showSpeckles = YES;
-	_imageFileName = @"";
+	_imageFileName = [[NSString alloc] initWithString:@""];
 	
 	_speckle =  [[Texture2D alloc] initWithImage: [UIImage imageNamed:kImage_Speckle]];
 	_paper = [[Texture2D alloc] initWithImage: [UIImage imageNamed:kImage_Paper]];
@@ -98,13 +92,25 @@ CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
 
 
 - (void)dealloc {
-	[self startDrawTimer:NO];	
+	[self startDrawTimer:NO];
+	
+	[_image release];
+	[_speckle release];
+	[_paper release];
+	
+	[_imageFileName release];
+	
+    [super dealloc];
 }
 
 - (void) set_imageFileName:(NSString*)newImageFileName {
 	NSString *imagePath;
 	
 	if (_firstDraw || [newImageFileName localizedCompare:_imageFileName] != NSOrderedSame) {
+		if (!_firstDraw) {
+			[_image release];
+			[_imageFileName release];
+		}
 		
 		_imageFileName = [[NSString alloc] initWithString:newImageFileName];
 		
@@ -118,4 +124,4 @@ CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
 	return _imageFileName;
 }
 
-@end
+@end

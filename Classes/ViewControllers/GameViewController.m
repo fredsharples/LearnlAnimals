@@ -23,7 +23,7 @@
 	
 	_paperImageView.image = [UIImage imageNamed:kImage_Paper];
 	
-	_soundIdentifier = @"";
+	_soundIdentifier = [[NSString alloc] initWithString:@""];
 }
 
 
@@ -51,11 +51,21 @@
 - (void)dealloc {
 	[self invalidateTimer];
 	
+	[_levelData release];
+	[_levels release];
 	
+	[_paperImageView release];
 	
+	[_babyAnimalEAGLView0 release];
+	[_babyAnimalView release];
+	/* Removed because no swipe gestures anymore */
+	//[_babyAnimalView0 release];
+	//[_babyAnimalView1 release];
 	
+	[_soundIdentifier release];
+	[_type release];
 	
-	
+    [super dealloc];
 }
 
 #pragma mark -
@@ -87,6 +97,9 @@
 	_babyAnimalEAGLView0.alpha = 1.0;
 	_babyAnimalView.alpha = 1.0;
 	
+	/* Removed because no swipe gestures anymore */
+	//_babyAnimalView0.center = CGPointMake(_paperImageView.center.x, _paperImageView.center.y - 480);
+	//_babyAnimalView1.center = CGPointMake(_paperImageView.center.x, _paperImageView.center.y + 480);
 
 	if (_currentImage < kSectionsPerLevel) {
 		[UIView beginAnimations:nil context:NULL];
@@ -125,6 +138,58 @@
 	}
 }
 
+/* Removed because no swipe gestures anymore */
+/*
+- (void) swipeAnimation {
+	CGPoint eagleEndPoint, viewStartPoint, viewEndPoint;
+	
+	[self invalidateTimer];
+	
+	self.view.userInteractionEnabled = NO;
+	
+	_paperImageView.alpha = 0.0;
+	_babyAnimalEAGLView0.alpha = 1.0;
+	_babyAnimalView.alpha = 1.0;
+	
+	viewEndPoint = _paperImageView.center;
+	
+	if (_goBackwards) {
+		viewStartPoint = CGPointMake(_paperImageView.center.x, _babyAnimalEAGLView0.center.y - 480);
+		eagleEndPoint = CGPointMake(_paperImageView.center.x, viewEndPoint.y + 480);
+		_babyAnimalView0.center = viewStartPoint;
+	} else {
+		viewStartPoint = CGPointMake(_paperImageView.center.x, _babyAnimalEAGLView0.center.y + 480);
+		eagleEndPoint = CGPointMake(_paperImageView.center.x, viewEndPoint.y - 480);
+		_babyAnimalView1.center = viewStartPoint;
+	}
+	
+	if (_currentImage == kSectionsPerLevel) {
+		if (_levelNum + 1 < [_levels count]) {
+			[self setLevelNum:_levelNum + 1];
+		} else {
+			[self setLevelNum:0];
+		}
+	}
+	
+	[UIView beginAnimations:nil context:NULL];
+	if (_babyAnimalEAGLView0.center.y == viewEndPoint.y) {
+		[UIView setAnimationDuration:kViewFadeTime];
+	} else {
+		[UIView setAnimationDuration:kViewFadeTime/2.0];
+	}
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(viewFadedIn)];
+	
+	if (_goBackwards) {
+		_babyAnimalView0.center = viewEndPoint;
+	} else {
+		_babyAnimalView1.center = viewEndPoint;
+	}
+	_babyAnimalEAGLView0.center = eagleEndPoint;
+	
+	[UIView commitAnimations];
+}
+ */
 
 - (void) viewFadedIn {
 	//NSTimer *timer;
@@ -134,7 +199,9 @@
 	[self updateEAGLEImageView];
 	_babyAnimalEAGLView0.alpha = 1.0;
 	
-	
+	/* Removed because no swipe gestures anymore */
+	//_babyAnimalEAGLView0.center = _babyAnimalView.center;
+	//[self updateSideImages];
 	
 	[self playSoundIdentifier];
 	
@@ -142,9 +209,23 @@
 		[self startAnimationTimer];
 	}
 	self.view.userInteractionEnabled = YES;
-
+	
+	/* Removed because no swipe gestures anymore */
+	//timer = [NSTimer scheduledTimerWithTimeInterval:(kViewFadeTime/4.0) target:self selector:@selector(allowInput) userInfo:nil repeats:NO];
 }
 
+/* Removed because no swipe gestures anymore */
+/*
+- (void) allowInput {
+	self.view.userInteractionEnabled = YES;
+	
+	[self playSoundIdentifier];
+	
+	if (_currentImage == 1) {
+		[self startAnimationTimer];
+	}
+}
+ */
 
 - (void) startAnimationTimer {
 	_timer = nil;
@@ -212,6 +293,41 @@
 	_currentImage++;
 }
 
+/* Removed because no swipe gestures anymore */
+/*
+- (void) updateSideImages {
+	NSString *newType = _type;
+	int newImage = _currentImage;
+	int newLevel = _levelNum;
+	
+	// right
+	if (newImage == kSectionsPerLevel) {
+		newLevel++;
+		if (newLevel == [_levels count]) {
+			newLevel = 0;
+		}
+		newType = [NSString stringWithString:[[_levels objectAtIndex:newLevel] objectAtIndex:0]];
+		newImage = 0;
+	}
+	[self updateImage:_babyAnimalView1 forIndex:newImage forType:newType];
+	_babyAnimalView1.center = CGPointMake(_paperImageView.center.x, _paperImageView.center.y + 480);
+	
+	// left
+	newType = _type;
+	newImage = _currentImage - 2;
+	newLevel = _levelNum;
+	if (_currentImage == 1 || newImage < 0) {
+		newLevel = _levelNum - 1;
+		if (newLevel < 0) {
+			newLevel = [_levels count] - 1;
+		}
+		newType = [NSString stringWithString:[[_levels objectAtIndex:newLevel] objectAtIndex:0]];
+		newImage = 2;
+	}
+	[self updateImage:_babyAnimalView0 forIndex:newImage forType:newType];
+	_babyAnimalView0.center = CGPointMake(_paperImageView.center.x, _paperImageView.center.y - 480);
+}
+ */
 
 - (void) updateAnimationImage {
 	_currentAnimation++;
@@ -238,6 +354,8 @@
 	_babyAnimalEAGLView0.alpha = 1.0;
 	[self updateEAGLEImageView];
 	
+	/* Removed because no swipe gestures anymore */
+	//[self updateSideImages];
 	
 	[self initializeViewAnimation];
 }
@@ -251,15 +369,133 @@
 	[self crossFade];
 }
 
+/* Removed because no swipe gestures anymore */
+/*
+- (void) swipeImage {
+	int newLevel, newImage;
+	
+	[self invalidateTimer];
+	
+	if (_soundIdentifier && [_soundIdentifier length] > 0) {
+		[(BabyAnimalsAppDelegate*)[[UIApplication sharedApplication] delegate] stopSound:_soundIdentifier];
+	}
+	
+	if (_goBackwards) {
+		newImage = _currentImage - 2;
+		if (_currentImage == 1 || newImage < 0) {
+			newLevel = _levelNum - 1;
+			if (newLevel < 0) {
+				newLevel = [_levels count] - 1;
+			}
+			[self setLevelNum:newLevel];
+			_currentImage = 2;
+			[self swipeAnimation];
+		} else {
+			_currentImage = newImage;
+			[self swipeAnimation];
+		}
+	} else {
+		[self swipeAnimation];
+	}
+}
+ */
 
+#pragma mark -
+#pragma mark Touches
+
+/* Removed because no swipe gestures anymore */
+/*
+// A tap starts game play
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
+	UITouch *touch = [touches anyObject];
+	NSUInteger numTaps = [touch tapCount];
+	_swiped = NO;
+	_goBackwards = NO;
+	if (numTaps < 2) {
+		_gestureStartPoint = [touch locationInView:self.view];
+		_swipeOffset = _babyAnimalEAGLView0.center.y - _gestureStartPoint.y;
+	}
+}
+
+// A tap starts game play
+- (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
+	UITouch *touch = [touches anyObject];
+	CGPoint currentPosition = [touch locationInView:self.view];
+
+	[self invalidateTimer];
+	_babyAnimalEAGLView0.alpha = 1.0;
+	_babyAnimalView.alpha = 0.0;
+	_babyAnimalView0.alpha = 1.0;
+	_babyAnimalView1.alpha = 1.0;
+	
+	_babyAnimalEAGLView0.center = CGPointMake(_paperImageView.center.x, currentPosition.y + _swipeOffset);
+	
+	if (_babyAnimalEAGLView0.center.y < 240) {
+		// drag left
+		_babyAnimalView1.center = CGPointMake(_paperImageView.center.x, _babyAnimalEAGLView0.center.y + 480);
+	} else {
+		// drag right
+		_babyAnimalView0.center = CGPointMake(_paperImageView.center.x, _babyAnimalEAGLView0.center.y - 480);
+	}
+}
+*/
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
+	/* Removed because no swipe gestures anymore */
+	/*
+	UITouch *touch = [touches anyObject];
+	NSUInteger numTaps = [touch tapCount];	
+	CGPoint currentPosition = [touch locationInView:self.view];
+	CGFloat deltaX = fabsf(_gestureStartPoint.x - currentPosition.x);
+	CGFloat deltaY = fabsf(_gestureStartPoint.y - currentPosition.y);
+	 */
+	
+	self.view.userInteractionEnabled = NO;
+	
+	/* Removed because no swipe gestures anymore */
+	/*
+	if (numTaps == 0) {
+		if (deltaY > kMinimumGestureLength && deltaX < deltaY) {
+			_swiped = YES;
+			if (_gestureStartPoint.y < currentPosition.y) {
+				_goBackwards = YES;
+			}
+			
+			[self swipeImage];
+
+		} else {
+			[UIView beginAnimations:nil context:NULL];
+			[UIView setAnimationDuration:kViewFadeTime/2.0];
+			[UIView setAnimationDelegate:self];
+			[UIView setAnimationDidStopSelector:@selector(snapBackDone)];
+			
+			_babyAnimalEAGLView0.center = _paperImageView.center;
+			
+			if (currentPosition.y + _swipeOffset < 240) {
+				// was dragging left
+				_babyAnimalView1.center = CGPointMake(_paperImageView.center.x, _paperImageView.center.y + 480);
+			} else {
+				// was dragging right
+				_babyAnimalView0.center = CGPointMake(_paperImageView.center.x, _paperImageView.center.y - 480);
+			}
+			
+			[UIView commitAnimations];
+		}
+	} 
+	 */
+	//if (numTaps == 1) {
+		/* Removed because no swipe gestures anymore */
+		//[self snapBack];
+		//NSTimer *timer;
+		//timer = [NSTimer scheduledTimerWithTimeInterval:(kViewFadeTime/2.0) target:self selector:@selector(updateImage) userInfo:nil repeats:NO];
 		[self updateImage];
+	//}
 }
 
 #pragma mark -
 #pragma mark Sound
 
 - (void) playSoundIdentifier {
+	[_soundIdentifier release];
 	if (_currentImage == 1) {
 		_soundIdentifier = [[NSString alloc] initWithFormat:@"VO_%@", _type];
 		[(BabyAnimalsAppDelegate*)[[UIApplication sharedApplication] delegate] playSound:_soundIdentifier restart:YES];
@@ -294,6 +530,7 @@
 		_timer = [NSTimer scheduledTimerWithTimeInterval:(kViewFadeTime) target:self selector:@selector(checkIfSFXPlaying) userInfo:nil repeats:NO];
 	} else {
 		_timer = nil;
+		[_soundIdentifier release];
 		_soundIdentifier = [[NSString alloc] initWithFormat:@"VO_%@", _type];
 		[(BabyAnimalsAppDelegate*)[[UIApplication sharedApplication] delegate] playSound:_soundIdentifier restart:YES];
 	}
@@ -329,6 +566,8 @@
 	[(BabyAnimalsAppDelegate*)[[UIApplication sharedApplication] delegate] playSound:_soundIdentifier restart:YES];
 }
 
+#pragma mark -
+#pragma mark Screen snapped back after dragging
 - (void) invalidateTimer {
 	if (_timer) {
 		[_timer invalidate];
@@ -336,7 +575,22 @@
 	}
 }
 
+#pragma mark -
+#pragma mark Screen snapped back after dragging
+/* Removed because no swipe gestures anymore */
+/*
+- (void) snapBackDone {
+	self.view.userInteractionEnabled = YES;
+	
+	if (_currentImage == 1) {
+		[self startAnimationTimer];
+	}
+}
 
+- (void) snapBack {
+	_babyAnimalEAGLView0.center = _paperImageView.center;
+}
+*/
 
 #pragma mark -
 #pragma mark Accessors
@@ -350,6 +604,7 @@
 	_currentAnimation = 1;
 	_levelNum = newLevelNum;
 	_levelData = [_levels objectAtIndex:_levelNum];
+	[_type release];
 	_type = [[NSString alloc] initWithString:[_levelData objectAtIndex:0]];
 }
 
