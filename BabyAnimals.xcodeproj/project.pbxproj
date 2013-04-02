@@ -210,6 +210,7 @@
 		99E5F4D6106D8FC2005CC0EC /* screen_person_drawing_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E5F4D2106D8FC2005CC0EC /* screen_person_drawing_03.png */; };
 		99E5F4D7106D8FC2005CC0EC /* screen_person_drawing_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E5F4D3106D8FC2005CC0EC /* screen_person_drawing_04.png */; };
 		99E5F4D8106D8FC2005CC0EC /* screen_person_drawing_05.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E5F4D4106D8FC2005CC0EC /* screen_person_drawing_05.png */; };
+		B6AE2242170AA5E100FA0E42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6AE2241170AA5E100FA0E42 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -434,6 +435,7 @@
 		99E5F4D2106D8FC2005CC0EC /* screen_person_drawing_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_person_drawing_03.png; sourceTree = "<group>"; };
 		99E5F4D3106D8FC2005CC0EC /* screen_person_drawing_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_person_drawing_04.png; sourceTree = "<group>"; };
 		99E5F4D4106D8FC2005CC0EC /* screen_person_drawing_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_person_drawing_05.png; sourceTree = "<group>"; };
+		B6AE2241170AA5E100FA0E42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -479,6 +481,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				B6AE2241170AA5E100FA0E42 /* Default-568h@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -878,7 +881,11 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BabyAnimals" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1073,6 +1080,7 @@
 				8CFAC84A10C866BF00FD210B /* moregames_down.png in Resources */,
 				8CFAC84B10C866BF00FD210B /* moregames_up.png in Resources */,
 				8CFAC84C10C866BF00FD210B /* uhoh_popup.png in Resources */,
+				B6AE2242170AA5E100FA0E42 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1117,6 +1125,7 @@
 				GCC_PREFIX_HEADER = BabyAnimals_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "BabyAnimals-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Animals;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BAF5884B-8EC0-4188-B17B-1132E2A45C53";
 			};
@@ -1132,6 +1141,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BabyAnimals_Prefix.pch;
 				INFOPLIST_FILE = "BabyAnimals-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Animals;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D8118D65-4D86-43E0-B9A1-B41486455CBB";
 			};
@@ -1141,13 +1151,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Orange Design, Inc.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C077885-3337-4A14-A7FC-22DD1608FC0E";
-				SDKROOT = iphoneos3.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 			};
 			name = Distribution;
 		};
@@ -1162,6 +1172,7 @@
 				GCC_PREFIX_HEADER = BabyAnimals_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "BabyAnimals-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Animals;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "07525FFB-64A7-4E82-898F-1F325059728E";
 			};
@@ -1176,7 +1187,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1189,7 +1200,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
