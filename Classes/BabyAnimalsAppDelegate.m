@@ -12,6 +12,8 @@
 #import "TitleViewController.h"
 #import "GameViewController.h"
 #import "CheatViewController.h"
+#import "BabyAnimalViewController.h"
+
 
 @implementation BabyAnimalsAppDelegate
 
@@ -28,8 +30,13 @@
 	_pause = NO;
 	
     //FS supposed to help with setting the bounds for the EAGL view
-    self.window.frame = CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height);
+    //self.window.frame = CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height);
+    
+    //FS fix problem with xcode finding root view controller
+    _viewController = [[BabyAnimalViewController alloc] init];
     [self.window setRootViewController:_viewController];
+
+    
 	//_gameViewController = [[GameViewController alloc] init];
 
 	_openALPlayer = [[OpenALPlayer alloc] init];
