@@ -20,9 +20,16 @@
 #pragma mark -
 #pragma mark Life Cycle
 
+
+
+
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 	_pause = NO;
 	
+    //FS supposed to help with setting the bounds for the EAGL view
+    self.window.frame = CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height);
+    [self.window setRootViewController:_viewController];
 	//_gameViewController = [[GameViewController alloc] init];
 
 	_openALPlayer = [[OpenALPlayer alloc] init];
