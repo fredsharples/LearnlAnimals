@@ -29,9 +29,10 @@ UIView subclass.
 	if(![EAGLContext setCurrentContext:_context]) {
 		return NO;
 	}
-	//newSize = [self bounds].size; //FS attempt to fix bounds issue. 
-    newSize = [[UIScreen mainScreen]bounds].size;
-	//newSize = [eaglLayer bounds].size;
+	//newSize = [self bounds].size; //FS attempt to fix bounds issue.
+    //newSize = self.window.frame.size;
+    //newSize = [[UIScreen mainScreen]bounds].size;
+	newSize = [eaglLayer bounds].size;
 	newSize.width = roundf(newSize.width); //This is where we need to fix the scaling issues.
 	newSize.height = roundf(newSize.height);//We can use this multiplier for retina display but getting the proper bounds would be better.
 	

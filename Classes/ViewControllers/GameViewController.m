@@ -337,7 +337,8 @@
 	}
 	
 	NSString *imageName = [NSString stringWithFormat:@"screen_%@_drawing_0%d", _type, [[_levelData objectAtIndex:_currentAnimation] intValue]];
-
+    
+	
 	_babyAnimalEAGLView0._imageFileName = imageName;
 	
 	[self startAnimationTimer];
