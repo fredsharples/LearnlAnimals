@@ -33,10 +33,9 @@ UIView subclass.
 	if(![EAGLContext setCurrentContext:_context]) {
 		return NO;
 	}
-	//newSize = [self bounds].size; //FS attempt to fix bounds issue.
-    //newSize = self.window.frame.size; //results in zero
-    newSize = [[UIScreen mainScreen]bounds].size; //results in 320x480
-	//newSize = [eaglLayer bounds].size; //results in 320x480
+	
+    //newSize = [[UIScreen mainScreen]bounds].size; //results in 320x480
+	newSize = [eaglLayer bounds].size; //results in 320x480
 	newSize.width = roundf(newSize.width*screenScale);
 	newSize.height = roundf(newSize.height*screenScale);    
     

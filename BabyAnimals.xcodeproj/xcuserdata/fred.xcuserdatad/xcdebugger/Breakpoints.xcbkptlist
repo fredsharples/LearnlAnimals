@@ -8,12 +8,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/Views/MyEAGLView.m"
-         timestampString = "387757592.209249"
+         timestampString = "387777274.534321"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "224"
-         endingLineNumber = "224"
+         startingLineNumber = "223"
+         endingLineNumber = "223"
          landmarkName = "-convertPointFromViewToSurface:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/Views/MyEAGLView.m"
+         timestampString = "387777653.189996"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "39"
+         endingLineNumber = "39"
+         landmarkName = "-_createSurface"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

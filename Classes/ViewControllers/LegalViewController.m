@@ -27,10 +27,10 @@
 	
 	_babyAnimalView = [[BabyAnimalView alloc] initWithFrame:CGRectZero];
 	_babyAnimalView._imageFileName = @"screen_legal";
-	_babyAnimalView.frame = self.view.bounds;
+	_babyAnimalView.frame = self.view.bounds; //FS this is scaling up the image to the iphone 5 aspect ratio
 	[self.view addSubview:_babyAnimalView];
 	
-	_moreGamesButton = [self createButtonWithImage:@"moregames" x:75 y:127];
+	_moreGamesButton = [self createButtonWithImage:@"moregames" x:75 y:127]; //FS this needs to be percentage for iphone 5
 	[_moreGamesButton addTarget:self action:@selector(moreGames:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:_moreGamesButton];
 	
