@@ -25,17 +25,21 @@ UIView subclass.
 	CGSize					newSize;
 	GLuint					oldRenderbuffer;
 	GLuint					oldFramebuffer;
+    //get the screen scale to detect retina screens
+    CGFloat screenScale = [[UIScreen mainScreen] scale];
+    
+    
 	
 	if(![EAGLContext setCurrentContext:_context]) {
 		return NO;
 	}
 	//newSize = [self bounds].size; //FS attempt to fix bounds issue.
-    //newSize = self.window.frame.size;
-    //newSize = [[UIScreen mainScreen]bounds].size;
-	newSize = [eaglLayer bounds].size;
-	newSize.width = roundf(newSize.width); //This is where we need to fix the scaling issues.
-	newSize.height = roundf(newSize.height);//We can use this multiplier for retina display but getting the proper bounds would be better.
-	
+    //newSize = self.window.frame.size; //results in zero
+    newSize = [[UIScreen mainScreen]bounds].size; //results in 320x480
+	//newSize = [eaglLayer bounds].size; //results in 320x480
+	newSize.width = roundf(newSize.width*screenScale);
+	newSize.height = roundf(newSize.height*screenScale);    
+    
 	glGetIntegerv(GL_RENDERBUFFER_BINDING_OES, (GLint *) &oldRenderbuffer);
 	glGetIntegerv(GL_FRAMEBUFFER_BINDING_OES, (GLint *) &oldFramebuffer);
 	
