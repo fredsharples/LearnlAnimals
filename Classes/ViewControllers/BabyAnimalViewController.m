@@ -29,6 +29,7 @@
 	[self.view addSubview:_babyAnimalView];
 	
 	[self initializeViewAnimation];
+   
 }
 
 /*
@@ -65,4 +66,4 @@
     [super dealloc];
 }
 
-@end
+@end

@@ -210,6 +210,7 @@
 		99E5F4D6106D8FC2005CC0EC /* screen_person_drawing_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E5F4D2106D8FC2005CC0EC /* screen_person_drawing_03.png */; };
 		99E5F4D7106D8FC2005CC0EC /* screen_person_drawing_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E5F4D3106D8FC2005CC0EC /* screen_person_drawing_04.png */; };
 		99E5F4D8106D8FC2005CC0EC /* screen_person_drawing_05.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E5F4D4106D8FC2005CC0EC /* screen_person_drawing_05.png */; };
+		B69E7C19171E13E7000C49F5 /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E7C18171E13E7000C49F5 /* LegalViewController.xib */; };
 		B6AE2242170AA5E100FA0E42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6AE2241170AA5E100FA0E42 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -435,6 +436,7 @@
 		99E5F4D2106D8FC2005CC0EC /* screen_person_drawing_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_person_drawing_03.png; sourceTree = "<group>"; };
 		99E5F4D3106D8FC2005CC0EC /* screen_person_drawing_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_person_drawing_04.png; sourceTree = "<group>"; };
 		99E5F4D4106D8FC2005CC0EC /* screen_person_drawing_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_person_drawing_05.png; sourceTree = "<group>"; };
+		B69E7C18171E13E7000C49F5 /* LegalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegalViewController.xib; sourceTree = "<group>"; };
 		B6AE2241170AA5E100FA0E42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -762,6 +764,7 @@
 				8C5F267F1067EF4F00C9431C /* BabyAnimalViewController.m */,
 				8C264DCB1059689B0029EBBA /* LegalViewController.h */,
 				8C264DCC1059689B0029EBBA /* LegalViewController.m */,
+				B69E7C18171E13E7000C49F5 /* LegalViewController.xib */,
 				8C264E5410596FE70029EBBA /* TitleViewController.h */,
 				8C264E5510596FE70029EBBA /* TitleViewController.m */,
 				8C3BBEBC107D2F120011EB22 /* TitleViewController.xib */,
@@ -1082,6 +1085,7 @@
 				8CFAC84B10C866BF00FD210B /* moregames_up.png in Resources */,
 				8CFAC84C10C866BF00FD210B /* uhoh_popup.png in Resources */,
 				B6AE2242170AA5E100FA0E42 /* Default-568h@2x.png in Resources */,
+				B69E7C19171E13E7000C49F5 /* LegalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

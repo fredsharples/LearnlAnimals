@@ -70,6 +70,7 @@
 	
 	view = [[UIView alloc] initWithFrame:mainRect];
 	view.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+
 	self.view = view;
 	[view release];
 	

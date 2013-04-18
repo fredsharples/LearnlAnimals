@@ -57,7 +57,7 @@
     // Override point for customization after application launch
     [window makeKeyAndVisible];
 //	[[UIDevice currentDevice] setOrientation:UIInterfaceOrientationLandscapeRight];
-	window.autoresizesSubviews = YES;
+	window.autoresizesSubviews = YES; 
 }
 
 /**
@@ -140,6 +140,7 @@
 	if (state == kGameState_Legal) {
 		_viewController = [[LegalViewController alloc] init];
 		[window addSubview:[_viewController view]];
+        _paperImageView.alpha = 0.0;
 	} else if (state == kGameState_Title) {
 		_viewController = [[TitleViewController alloc] init];
 		[_viewController setLevelData:_titleData];

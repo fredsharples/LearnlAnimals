@@ -9,8 +9,11 @@
 #import "BabyAnimalViewController.h"
 
 @interface LegalViewController : BabyAnimalViewController {
+   IBOutlet LegalViewController *_legalView;
 	UIButton *_moreGamesButton;
 	UIImageView *_noWebConnection;
+    //IBOutlet UIImageView *background;
+   // IBOutlet UIView *_legalView;
 }
 
 - (BOOL) connectedToNetwork:(NSString*)urlString;
