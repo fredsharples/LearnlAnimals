@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -111,7 +111,6 @@
 		8C228D46105ED64D00EE0BF6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C228D44105ED64D00EE0BF6 /* icon.png */; };
 		8C228D47105ED64D00EE0BF6 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 8C228D45105ED64D00EE0BF6 /* iTunesArtwork */; };
 		8C228E08105EEBA500EE0BF6 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C228E07105EEBA500EE0BF6 /* GameViewController.m */; };
-		8C264DCD1059689B0029EBBA /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C264DCC1059689B0029EBBA /* LegalViewController.m */; };
 		8C264E4E10596F8F0029EBBA /* screen_legal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C264E2710596F8F0029EBBA /* screen_legal.png */; };
 		8C264E5610596FE70029EBBA /* TitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C264E5510596FE70029EBBA /* TitleViewController.m */; };
 		8C2BBFB4106D3DD200C0B607 /* screen_pig_drawing_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2BBFB1106D3DD200C0B607 /* screen_pig_drawing_02.png */; };
@@ -211,6 +210,9 @@
 		99E5F4D7106D8FC2005CC0EC /* screen_person_drawing_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E5F4D3106D8FC2005CC0EC /* screen_person_drawing_04.png */; };
 		99E5F4D8106D8FC2005CC0EC /* screen_person_drawing_05.png in Resources */ = {isa = PBXBuildFile; fileRef = 99E5F4D4106D8FC2005CC0EC /* screen_person_drawing_05.png */; };
 		B69E7C19171E13E7000C49F5 /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E7C18171E13E7000C49F5 /* LegalViewController.xib */; };
+		B69E7C1E172094D5000C49F5 /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69E7C1D172094D5000C49F5 /* LegalViewController.m */; };
+		B69E7C201720AD4C000C49F5 /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E7C1F1720AD4B000C49F5 /* IntroViewController.xib */; };
+		B69E7C231720AD9D000C49F5 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69E7C221720AD9C000C49F5 /* IntroViewController.m */; };
 		B6AE2242170AA5E100FA0E42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6AE2241170AA5E100FA0E42 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -323,8 +325,6 @@
 		8C228D45105ED64D00EE0BF6 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = text; path = iTunesArtwork; sourceTree = "<group>"; };
 		8C228E06105EEBA500EE0BF6 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		8C228E07105EEBA500EE0BF6 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		8C264DCB1059689B0029EBBA /* LegalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegalViewController.h; sourceTree = "<group>"; };
-		8C264DCC1059689B0029EBBA /* LegalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegalViewController.m; sourceTree = "<group>"; };
 		8C264E2710596F8F0029EBBA /* screen_legal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_legal.png; sourceTree = "<group>"; };
 		8C264E5410596FE70029EBBA /* TitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleViewController.h; sourceTree = "<group>"; };
 		8C264E5510596FE70029EBBA /* TitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleViewController.m; sourceTree = "<group>"; };
@@ -437,6 +437,11 @@
 		99E5F4D3106D8FC2005CC0EC /* screen_person_drawing_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_person_drawing_04.png; sourceTree = "<group>"; };
 		99E5F4D4106D8FC2005CC0EC /* screen_person_drawing_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_person_drawing_05.png; sourceTree = "<group>"; };
 		B69E7C18171E13E7000C49F5 /* LegalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegalViewController.xib; sourceTree = "<group>"; };
+		B69E7C1C172094D4000C49F5 /* LegalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegalViewController.h; sourceTree = "<group>"; };
+		B69E7C1D172094D5000C49F5 /* LegalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegalViewController.m; sourceTree = "<group>"; };
+		B69E7C1F1720AD4B000C49F5 /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
+		B69E7C211720AD9C000C49F5 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		B69E7C221720AD9C000C49F5 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		B6AE2241170AA5E100FA0E42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -762,9 +767,12 @@
 				8C3B083D10587F050008E91E /* ViewController.m */,
 				8C5F267E1067EF4F00C9431C /* BabyAnimalViewController.h */,
 				8C5F267F1067EF4F00C9431C /* BabyAnimalViewController.m */,
-				8C264DCB1059689B0029EBBA /* LegalViewController.h */,
-				8C264DCC1059689B0029EBBA /* LegalViewController.m */,
 				B69E7C18171E13E7000C49F5 /* LegalViewController.xib */,
+				B69E7C1F1720AD4B000C49F5 /* IntroViewController.xib */,
+				B69E7C211720AD9C000C49F5 /* IntroViewController.h */,
+				B69E7C221720AD9C000C49F5 /* IntroViewController.m */,
+				B69E7C1C172094D4000C49F5 /* LegalViewController.h */,
+				B69E7C1D172094D5000C49F5 /* LegalViewController.m */,
 				8C264E5410596FE70029EBBA /* TitleViewController.h */,
 				8C264E5510596FE70029EBBA /* TitleViewController.m */,
 				8C3BBEBC107D2F120011EB22 /* TitleViewController.xib */,
@@ -883,8 +891,11 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BabyAnimals" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -1086,6 +1097,7 @@
 				8CFAC84C10C866BF00FD210B /* uhoh_popup.png in Resources */,
 				B6AE2242170AA5E100FA0E42 /* Default-568h@2x.png in Resources */,
 				B69E7C19171E13E7000C49F5 /* LegalViewController.xib in Resources */,
+				B69E7C201720AD4C000C49F5 /* IntroViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1118,7 +1130,6 @@
 				8C3B084110587F050008E91E /* MyOpenALSupport.c in Sources */,
 				8C3B084210587F050008E91E /* OpenALPlayer.m in Sources */,
 				8C3B084610587F050008E91E /* ViewController.m in Sources */,
-				8C264DCD1059689B0029EBBA /* LegalViewController.m in Sources */,
 				8C264E5610596FE70029EBBA /* TitleViewController.m in Sources */,
 				8C228E08105EEBA500EE0BF6 /* GameViewController.m in Sources */,
 				8C5F26101067E4ED00C9431C /* QuartzView.m in Sources */,
@@ -1128,6 +1139,8 @@
 				8C3624A8106BEABA00304882 /* MyEAGLView.m in Sources */,
 				8C3624BA106BEAEB00304882 /* Texture2D.m in Sources */,
 				8C3624F6106BEC0400304882 /* BabyAnimalEAGLView.m in Sources */,
+				B69E7C1E172094D5000C49F5 /* LegalViewController.m in Sources */,
+				B69E7C231720AD9D000C49F5 /* IntroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1177,7 +1190,6 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
@@ -1209,7 +1221,6 @@
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "DEBUG=1";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1222,7 +1233,6 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Release;

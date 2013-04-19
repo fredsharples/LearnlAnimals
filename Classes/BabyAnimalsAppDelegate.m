@@ -13,6 +13,8 @@
 #import "GameViewController.h"
 #import "CheatViewController.h"
 #import "BabyAnimalViewController.h"
+#import "IntroViewController.h"
+
 
 
 @implementation BabyAnimalsAppDelegate
@@ -36,7 +38,7 @@
     _viewController = [[BabyAnimalViewController alloc] init];
     [self.window setRootViewController:_viewController];
 
-    
+    //uncomment to skip intros
 	//_gameViewController = [[GameViewController alloc] init];
 
 	_openALPlayer = [[OpenALPlayer alloc] init];
@@ -127,10 +129,20 @@
 	_titleData = [[NSArray alloc] initWithArray:[_gameData valueForKey:@"Title"]];
 }
 
+#pragma mark Transitions
+// add a property for the TransitionController
+
+
+
+
+
 #pragma mark -
 #pragma mark State Changes
 
 - (void) changeState:(unsigned)state {
+    
+    
+    
 	if (_viewController && [_viewController view] && [[_viewController view] superview]) {
 		[[_viewController view] removeFromSuperview];
 		[_viewController release];
@@ -138,8 +150,9 @@
 	}
 	
 	if (state == kGameState_Legal) {
-		_viewController = [[LegalViewController alloc] init];
+		_viewController = [[IntroViewController alloc] init];
 		[window addSubview:[_viewController view]];
+        [self.window makeKeyAndVisible];
         _paperImageView.alpha = 0.0;
 	} else if (state == kGameState_Title) {
 		_viewController = [[TitleViewController alloc] init];

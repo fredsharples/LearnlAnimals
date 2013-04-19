@@ -38,7 +38,7 @@
     [super viewDidLoad];
     //_legalView._imageFileName = @"screen_splash_01";
  //_babyAnimalEAGLView0._imageFileName = @"screen_splash_01";
- self.view.userInteractionEnabled = NO;
+ //self.view.userInteractionEnabled = NO;
 }
 
 
@@ -58,8 +58,9 @@
 }
 
 - (void)viewDidUnload {
-    [_legalView release];
-    _legalView = nil;
+    [self setLegalView:nil];
+   // [_legalView release];
+    //_legalView = nil;
     //[background release];
     //background = nil;
 	// Release any retained subviews of the main view.
@@ -68,14 +69,15 @@
 
 
 - (void)dealloc {
-	if (_noWebConnection) {
-		[_noWebConnection release];
-	}
+	//if (_noWebConnection) {
+	//	[_noWebConnection release];
+	//}
     //[background release];
+    //[_legalView release];
     [_legalView release];
     [super dealloc];
 }
-
+/*
 // A tap starts game play
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
 	[self fadeView];
@@ -105,10 +107,10 @@
 		_timer = [NSTimer scheduledTimerWithTimeInterval:(_pauseTime) target:self selector:@selector(fadeView) userInfo:nil repeats:NO];
 	}
 }
-
+*/
 #pragma mark -
 #pragma mark More Games
-
+/*
 - (BOOL) connectedToNetwork:(NSString*)urlString {
 	return ([NSString stringWithContentsOfURL:[NSURL URLWithString:urlString]]!=NULL)?YES:NO;
 }
@@ -121,16 +123,16 @@
 		NSURL *url = [NSURL URLWithString:kURLRequest];
 		[[UIApplication sharedApplication] openURL:url];
 	} else {
-		_noWebConnection = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"uhoh_popup.png"]];
-		_noWebConnection.center = CGPointMake(97, 240);
-		[self.view addSubview:_noWebConnection];
+		//_noWebConnection = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"uhoh_popup.png"]];
+		//_noWebConnection.center = CGPointMake(97, 240);
+		//[self.view addSubview:_noWebConnection];
 		
-		[_moreGamesButton removeFromSuperview];
+		//[_moreGamesButton removeFromSuperview];
 		
 		// Start the game timer
 		_startTime = CFAbsoluteTimeGetCurrent();
 		_timer = [NSTimer scheduledTimerWithTimeInterval:(kLegalTimeOut) target:self selector:@selector(fadeView) userInfo:nil repeats:NO];
 	}
 }
-
+*/
 @end
