@@ -488,7 +488,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				B6AE2241170AA5E100FA0E42 /* Default-568h@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -511,6 +510,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B6AE2241170AA5E100FA0E42 /* Default-568h@2x.png */,
 				8C228D44105ED64D00EE0BF6 /* icon.png */,
 				8C228D45105ED64D00EE0BF6 /* iTunesArtwork */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
