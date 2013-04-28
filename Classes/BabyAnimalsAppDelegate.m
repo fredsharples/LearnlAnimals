@@ -35,7 +35,7 @@
     self.window.frame = CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height);
     
     //FS fix problem with xcode finding root view controller
-    _viewController = [[BabyAnimalViewController alloc] init];
+    _viewController = [[IntroViewController alloc] init];
     [self.window setRootViewController:_viewController];
 
     //uncomment to skip intros

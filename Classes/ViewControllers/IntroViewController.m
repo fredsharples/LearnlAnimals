@@ -35,11 +35,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+}
+
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    
+}
 // A tap starts game play
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
 	
 	[self fadeView];
 }
+
 
 
 - (void) fadeView {
